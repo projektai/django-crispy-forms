@@ -83,13 +83,13 @@ def render_field(field, form, form_style, context, template=None, labelclass=Non
                 for index, (widget, attr) in enumerate(zip(widgets, list_attrs)):
                     if hasattr(field_instance.widget, 'widgets'):
                         if 'type' in attr and attr['type'] == "hidden":
-                            field_instance.widget.widgets[index].is_hidden = True
+                            field_instance.widget.widgets[index].input_type = "hidden"
                             field_instance.widget.widgets[index] = field_instance.hidden_widget()
 
                         field_instance.widget.widgets[index].attrs.update(attr)
                     else:
                         if 'type' in attr and attr['type'] == "hidden":
-                            field_instance.widget.is_hidden = True
+                            field_instance.widget.input_type = "hidden"
                             field_instance.widget = field_instance.hidden_widget()
 
                         field_instance.widget.attrs.update(attr)
